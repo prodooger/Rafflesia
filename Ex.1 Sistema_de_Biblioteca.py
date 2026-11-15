@@ -51,8 +51,14 @@ while Running:
     except ValueError:
         print(f"Erro: Valor digitado não suportado\nReiniciando o programa..."); WaitingDecision = False; continue
     if escolha <= 0 or escolha > len(SetChoices): print("Erro: Valor digitado não é uma opção configurada\nReiniciando o programa..."); WaitingDecision = False; continue
-    if escolha == 1: Biblioteca.Emprestar(); WaitingDecision = False
-    elif escolha == 2: Biblioteca.Devolver(); WaitingDecision = False
+    if escolha == 1:
+        if Biblioteca.Livros > 0:
+            Biblioteca.Emprestar();
+        WaitingDecision = False
+    elif escolha == 2: 
+        if Biblioteca.Emprestados > 0:
+            Biblioteca.Devolver(); 
+        WaitingDecision = False
     elif escolha == 3: Biblioteca.ConsultaLivros(); WaitingDecision = False
     elif escolha == 4: Biblioteca.ConsultaEmprestimo(); WaitingDecision = False
     elif escolha == 5:
